@@ -1,0 +1,193 @@
+﻿@model IEnumerable<Sachin_452.Models.ViewModel.BikeDetailModel>
+
+@{
+    ViewBag.Title = "UserDashboard";
+    Layout = "~/Views/Shared/_LayoutUserPage.cshtml";
+}
+
+@if (TempData["success"] != null)
+{
+    <script>
+        toastr.success('@TempData["success"]')
+    </script>
+}
+@if (TempData["error"] != null)
+{
+    <script>
+        toastr.error('@TempData["error"]')
+    </script>
+}
+
+<style>
+    .card {
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 10px;
+        width: 320px;
+        margin: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-header {
+        position: relative;
+        padding: 0;
+    }
+
+    .image-container {
+        position: relative;
+    }
+
+    .bike-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .FavBtnContainer {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+
+    .fav-btn {
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .price {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .year-km {
+        font-size: 16px;
+        color: #666;
+        margin-bottom: 10px;
+    }
+
+    .brand-model {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 10px;
+        border: none;
+        background-color: #4CAF50;
+        color: #fff;
+        cursor: pointer;
+    }
+
+        .btn:hover {
+            background-color: #3e8e41;
+        }
+
+    .hero {
+        position: relative;
+    }
+
+    .ImageContainer {
+        display: flex;
+        justify-content: start;
+        position: relative;
+    }
+
+    .FavBtnContainer {
+        position: absolute;
+        right: 0.5rem;
+        top: 0.5rem;
+    }
+</style>
+<div class="container">
+    <div class="row mx-4 mt-5">
+        @if (Model != null)
+        {
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered w-50">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="Index" method="post">
+                                <div class="brandName">
+                                    <p class="fs-6 fw-bold">Brand Name :</p>
+                                    <select class="form-select form-control" name="BrandName">
+                                        <option value=" " selected> Select Brand Name </option>
+                                        @if (ViewBag.BikeBrandList != null)
+                                        {
+                                            foreach (var i in ViewBag.BikeBrandList)
+                                            {
+                                                <option value="@i">@i</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                                <div class="">
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            foreach (var item in Model)
+            {
+                <div class="card">
+                    <div class="card-header">
+                        <div class="image-container">
+                            <img src="~/Images/BikeImage/@item.BikeImagesPath[0]" class="bike-image" />
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h2 class="price">₹ @item.Price</h2>
+                        <p class="year-km">@item.Years - @item.KilometresDriven Km</p>
+                        <h3 class="brand-model">@item.BrandName @item.BikeModel</h3>
+                        <div class="d-flex  ">
+
+                            <div class="mr-5">
+                                <a href="~/User/GetBike?BikeId=@item.BikeId" class="btn btn-success">View Details</a>
+                            </div>
+
+                            @if (item.IsFavourite == 0)
+                            {
+                                <a href="~/User/AddFavourite?BikeId=@item.BikeId" class="btn btn-primary">Add Favourite</a>
+                            }
+                            else
+                            {
+                                <h2 class="text-danger">Added In Favourite</h2>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="container d-flex justify-content-center align-content-center">
+                <div class="card w-50">
+                    <div class="card-body">
+                        <div class="m-3 p-5">
+                            <p class="fw-bold fs-2 text-primary">No Record Found</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+

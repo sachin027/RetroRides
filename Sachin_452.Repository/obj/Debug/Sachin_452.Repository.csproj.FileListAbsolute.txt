@@ -1,0 +1,15 @@
+C:\Sachin\MVC\Sachin_452\Sachin_452.Repository\bin\Debug\Sachin_452.Repository.dll.config
+C:\Sachin\MVC\Sachin_452\Sachin_452.Repository\bin\Debug\Sachin_452.Repository.dll
+C:\Sachin\MVC\Sachin_452\Sachin_452.Repository\bin\Debug\Sachin_452.Repository.pdb
+C:\Sachin\MVC\Sachin_452\Sachin_452.Repository\bin\Debug\EntityFramework.dll
+C:\Sachin\MVC\Sachin_452\Sachin_452.Repository\bin\Debug\EntityFramework.SqlServer.dll
+C:\Sachin\MVC\Sachin_452\Sachin_452.Repository\bin\Debug\Sachin_452.Models.dll
+C:\Sachin\MVC\Sachin_452\Sachin_452.Repository\bin\Debug\Sachin_452.Models.pdb
+C:\Sachin\MVC\Sachin_452\Sachin_452.Repository\bin\Debug\Sachin_452.Models.dll.config
+C:\Sachin\MVC\Sachin_452\Sachin_452.Repository\bin\Debug\EntityFramework.xml
+C:\Sachin\MVC\Sachin_452\Sachin_452.Repository\bin\Debug\EntityFramework.SqlServer.xml
+C:\Sachin\MVC\Sachin_452\Sachin_452.Repository\obj\Debug\Sachin_452.Repository.csproj.AssemblyReference.cache
+C:\Sachin\MVC\Sachin_452\Sachin_452.Repository\obj\Debug\Sachin_452.Repository.csproj.CoreCompileInputs.cache
+C:\Sachin\MVC\Sachin_452\Sachin_452.Repository\obj\Debug\Sachin_452.Repository.csproj.CopyComplete
+C:\Sachin\MVC\Sachin_452\Sachin_452.Repository\obj\Debug\Sachin_452.Repository.dll
+C:\Sachin\MVC\Sachin_452\Sachin_452.Repository\obj\Debug\Sachin_452.Repository.pdb

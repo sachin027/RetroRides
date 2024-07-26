@@ -1,0 +1,96 @@
+﻿@model IEnumerable<Sachin_452.Models.ViewModel.BikeDetailModel>
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdminPage.cshtml";
+}
+
+<a class="btn btn-outline-primary" href="AddBikeDetails">+ Sell</a>
+
+
+
+    <table class="table ">
+        <thead>
+            <tr>
+                <th hidden>
+                    @Html.DisplayNameFor(model => model.BikeId)
+                </th>
+                <th hidden>
+                    @Html.DisplayNameFor(model => model.SellerId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BrandName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BikeImages)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SellerFirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SellerlastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SellerEmail)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SellerPhoneNumber)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td hidden>
+                        @Html.DisplayFor(modelItem => item.BikeId)
+                    </td>
+                    <td hidden>
+                        @Html.DisplayFor(modelItem => item.SellerId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BrandName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        <div id="carousel-@item.BikeId" class="carousel slide carousel-dark" data-bs-ride="carousel">
+                            <div class="carousel-inner d-flex align-items-center " style="width:150px; height:150px">
+                                @{
+                                    bool first = true;
+                                    foreach (var img in item.BikeImagesPath)
+                                    {
+                                        <div class="carousel-item @(first ? "active" : "") text-center">
+                                            <img src="~/Images/BikeImage/@img" class="d-block mx-auto w-75 object-fit-content">
+                                        </div> first = false;
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SellerFirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SellerlastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SellerEmail)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SellerPhoneNumber)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "EditDetail", new { BikeId = item.BikeId }) |
+                        @Html.ActionLink("Delete", "Delete", new { BikeId = item.BikeId })
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>

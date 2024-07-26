@@ -1,0 +1,35 @@
+﻿@model List<Sachin_452.Models.ViewModel.BikeDetailModel>
+@{
+    ViewBag.Title = "FavouriteBike";
+    Layout = "~/Views/Shared/_LayoutUserPage.cshtml";
+}
+
+
+
+<div class="d-flex">
+
+
+    @foreach (var item in Model)
+    {
+        string[] a = item.BikeImages.Split(',');
+
+        <div class="card m-3 shadow-lg bg-body rounded" style="width: 18rem;">
+
+            <div>
+                <div class="ImageContainer ">
+
+                    <img src="~/Images/BikeImage/@a[0]" height="180" class="w-75 object-fit-contain" />
+                </div>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">@item.BrandName</h5>
+                <p class="card-text">@item.Description</p>
+                <div>
+                    <a href="~/User/GetBike?BikeId=@item.BikeId" class="btn btn-outline-primary">View Details</a>
+                    <a href="~/User/RemoveBikeFromFavourite?BikeId=@item.BikeId&UserId=@Convert.ToInt32(Session["UserId"])" class="btn btn-outline-danger">Remove</a>
+                   @* @Html.ActionLink("Remove ", "RemoveFavourite", new { @Controller = "User", UserId = Convert.ToInt32(Session["UserId"]), itemId = item.BikeId }, htmlAttributes: new { @class = "btn btn-outline-primary" })*@
+                </div>
+            </div>
+        </div>
+    }
+</div>

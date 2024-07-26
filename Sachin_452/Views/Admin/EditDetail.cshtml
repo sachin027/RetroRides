@@ -1,0 +1,226 @@
+﻿@model Sachin_452.Models.ViewModel.BikeDetailModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdminPage.cshtml";
+}
+
+<h2>Edit Bike Details</h2>
+
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        /*padding: 20px;*/
+    }
+
+    .form-container {
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    input[type="text"], input[type="email"], input[type="tel"], textarea, select {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    textarea {
+        height: 120px;
+        resize: vertical;
+    }
+
+    input[type="file"] {
+        margin-top: 5px;
+    }
+
+    button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+    .error-message {
+        color: red;
+        font-size: 14px;
+        margin-top: 5px;
+    }
+</style>
+
+<div class="form-container">
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="brand">Brand Name <span>(Required)</span>:</label>
+            <input type="text" id="brand" name="BrandName" value="@Model.BrandName" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="models">Models <span>(Required)</span>:</label>
+            <input type="text" id="models" name="BikeModel" value="@Model.BikeModel" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="years">Years <span>(Required)</span>:</label>
+            <input type="text" id="years" name="Years" value="@Model.Years" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="kilometres">Kilometres driven <span>(Required)</span>:</label>
+            <input type="text" id="kilometres" name="KilometresDriven" value="@Model.KilometresDriven" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="price">Price <span>(Required)</span>:</label>
+            <input type="text" id="price" name="Price" value="@Model.Price" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea id="description" name="Description" class="form-control">@Model.Description</textarea>
+        </div>
+        @* Images part start *@
+        <div class="form-group">
+            <label>Previous Image</label>
+            @foreach (var image in Model.BikeImagesPath)
+            {
+                <img src="~/Images/BikeImage/@image" height="150" width="200" class="object-fit-contain" />
+            }
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <input class="form-control" type="file" name="BikeImages" multiple />
+            </div>
+        </div>
+        @* Images part end *@
+        <div class="form-group">
+            <label for="sellerFirstName">Seller First Name <span>(Required)</span>:</label>
+            <input type="text" id="sellerFirstName" name="SellerFirstName" value="@Model.SellerFirstName" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="sellerLastName">Seller Last Name <span>(Required)</span>:</label>
+            <input type="text" id="sellerLastName" name="SellerlastName" value="@Model.SellerlastName" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="sellerEmail">Seller Email <span>(Required)</span>:</label>
+            <input type="text" id="sellerEmail" name="SellerEmail" value="@Model.SellerEmail" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="sellerPhone">Seller Phone Number <span>(Required)</span>:</label>
+            <input type="text" id="sellerPhone" name="SellerPhoneNumber" value="@Model.SellerPhoneNumber" class="form-control">
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+@*
+
+    @model Sachin_452.Models.ViewModel.BikeDetailModel
+
+    @{
+        Layout = "~/Views/Shared/_LayoutAdminPage.cshtml";
+    }
+
+    <h2>Edit Bike Details</h2>
+
+    <style>
+        /* your styles here */
+    </style>
+
+    <div class="form-container">
+        @using (Html.BeginForm("EditDetail", "YourControllerName", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.BrandName)
+                @Html.TextBoxFor(m => m.BrandName, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.BikeModel)
+                @Html.TextBoxFor(m => m.BikeModel, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Years)
+                @Html.TextBoxFor(m => m.Years, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.KilometresDriven)
+                @Html.TextBoxFor(m => m.KilometresDriven, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Price)
+                @Html.TextBoxFor(m => m.Price, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Description)
+                @Html.TextAreaFor(m => m.Description, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                <label>Previous Image</label>
+                @foreach (var image in Model.BikeImagesPath)
+                {
+                    <img src="~/Images/BikeImage/@image" height="150" width="200" class="object-fit-contain" />
+                }
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-10">
+                    <input class="form-control" type="file" name="BikeImages" multiple />
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.SellerFirstName)
+                @Html.TextBoxFor(m => m.SellerFirstName, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.SellerlastName)
+                @Html.TextBoxFor(m => m.SellerlastName, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.SellerEmail)
+                @Html.TextBoxFor(m => m.SellerEmail, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.SellerPhoneNumber)
+                @Html.TextBoxFor(m => m.SellerPhoneNumber, new { @class = "form-control" })
+            </div>
+
+            <button type="submit">Submit</button>
+        }
+    </div>*@

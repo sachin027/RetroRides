@@ -1,0 +1,12 @@
+C:\Sachin\MVC\Sachin_452\Sachin_452.Models\bin\Debug\Sachin_452.Models.dll.config
+C:\Sachin\MVC\Sachin_452\Sachin_452.Models\bin\Debug\Sachin_452.Models.dll
+C:\Sachin\MVC\Sachin_452\Sachin_452.Models\bin\Debug\Sachin_452.Models.pdb
+C:\Sachin\MVC\Sachin_452\Sachin_452.Models\bin\Debug\EntityFramework.dll
+C:\Sachin\MVC\Sachin_452\Sachin_452.Models\bin\Debug\EntityFramework.SqlServer.dll
+C:\Sachin\MVC\Sachin_452\Sachin_452.Models\bin\Debug\EntityFramework.xml
+C:\Sachin\MVC\Sachin_452\Sachin_452.Models\bin\Debug\EntityFramework.SqlServer.xml
+C:\Sachin\MVC\Sachin_452\Sachin_452.Models\obj\Debug\Sachin_452.Models.csproj.AssemblyReference.cache
+C:\Sachin\MVC\Sachin_452\Sachin_452.Models\obj\Debug\Sachin_452.Models.csproj.CoreCompileInputs.cache
+C:\Sachin\MVC\Sachin_452\Sachin_452.Models\obj\Debug\Sachin_452.Models.csproj.CopyComplete
+C:\Sachin\MVC\Sachin_452\Sachin_452.Models\obj\Debug\Sachin_452.Models.dll
+C:\Sachin\MVC\Sachin_452\Sachin_452.Models\obj\Debug\Sachin_452.Models.pdb

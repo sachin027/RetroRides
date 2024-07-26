@@ -1,0 +1,308 @@
+﻿@model Sachin_452.Models.ViewModel.UserModel
+
+@{
+    ViewBag.Title = "UserProfile";
+    Layout = "~/Views/Shared/_LayoutUserPage.cshtml";
+}
+
+<div class="container mt-5">
+    <form action="UserProfile" method="post" enctype="multipart/form-data">
+        <div class="row border border-1 border-success p-3 rounded-4">
+            <div class="d-flex justify-content-center mb-5">
+                <div class="position-relative">
+                    <img class="rounded-circle border border-black img-fluid" style="height: 150px; width: 150px;" src="~/Images/ProfilePicture/@Model.ProfilePhoto" id="profileImage" />
+                    <label for="profilePic" class="btn-sm rounded-circle btn-primary position-absolute bottom-0" style="cursor: pointer; right: 8px"><i class="fa-solid fa-pen" style="color:white;"></i></label>
+                </div>
+                <input name="ProfilePhoto" hidden type="file" accept="image/png, image/jpg, image/jpeg" id="profilePic" />
+            </div>
+
+            @Html.HiddenFor(m => m.UserID)
+            <div class="col-4">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.MiddleName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.MiddleName, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <label class="mx-3 form-label" name="DOB">Date Of Birth</label>
+                    <div class="col-md-12">
+                        <input type="date" class="form-control" name="DOB" value="@(Model.DOB != null ? Model.DOB?.ToString("yyyy-MM-dd") : "")" />
+                        @Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 ">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.AddressLine1, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.AddressLine1, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.AddressLine1, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.AddressLine2, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.AddressLine2, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-3">
+                <div class="form-group">
+                    <label for="CityId" class="form-label mx-3">Country</label>
+                    <div class="col-md-12">
+                        <select name="Country" class="form-select form-control" id="CountryId">
+                            <option value=" " selected>Select Country</option>
+                            @if (ViewBag.CountryList != null)
+                            {
+                                foreach (var item in ViewBag.CountryList)
+                                {
+                                    <option value="@item.CountryId">@item.CountryName</option>
+                                }
+                            }
+                        </select>
+                        @Html.ValidationMessageFor(model => model.Country, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-3">
+                <div class="form-group">
+                    <label for="CityId" class="form-label mx-3">State</label>
+                    <div class="col-md-12">
+                        <select name="State" class="form-select form-control" id="StateId">
+                            <option value=" " selected>Select State</option>
+                        </select>
+                        @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <label for="CityId" class="form-label mx-3">City</label>
+                    <div class="col-md-12">
+                        <select name="City" class="form-select form-control" id="CityId">
+                            <option value=" " selected>Select City</option>
+                        </select>
+                        @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-lg-3 mb-3">
+                <label for="exampleFormControlSelect1">Select ZipCode</label>
+                <select class="form-control " name="ZipCode" id="ZipCodeId">
+                    <option selected value="">--Select ZipCode--</option>
+                    @Html.ValidationMessageFor(model => model.ZipCode, "", new { @class = "text-danger" })
+                </select>
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <div>
+                    <button type="submit" class="btn btn-success">Edit Profile</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<script>
+
+
+    $(document).ready(function () {
+        $('#profilePic').on('change', function (event) {
+            var file = event.target.files[0];
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#profileImage').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(file);
+            }
+        })
+
+        if (@Model.Country != 0) {
+            $("#CountryId").val(@Model.Country)
+        }
+
+        if (@Model.State != 0) {
+
+            $('#StateId').html('<option value="">Select State</option>');
+            $('#CityId').html('<option value="">Select City</option>');
+
+            var CountryId = $("#CountryId").val();
+
+            $.ajax({
+                type: "GET",
+                url: "/Home/GetStateByCountry?countryId=" + CountryId,
+                success: function (data) {
+                    //console.log(data);
+                    ChangeStateDropDown(data)
+                    $("#StateId").val(@Model.State)
+                }
+            });
+            function ChangeStateDropDown(data) {
+                for (var i = 0; i < data.length; i++) {
+                    var options = `<option id="${data[i].StateId}" value="${data[i].StateId}" >${data[i].StateName}</option>`
+                    $("#StateId").append(options);
+                }
+            }
+        }
+
+        if (@Model.City != 0) {
+            $('#CityId').html('<option value="">Select City</option>');
+
+            var StateId = @Model.State
+            console.log(StateId)
+            $.ajax({
+                type: "GET",
+                url: "/Home/GetCityByState?stateId=" + StateId,
+                success: function (data) {
+                    console.log(data);
+                    ChangeCityDropDown(data)
+                    $("#CityId").val(@Model.City)
+                }
+            });
+
+            function ChangeCityDropDown(data) {
+                for (var i = 0; i < data.length; i++) {
+                    var options = `<option id="${data[i].CityId}" value="${data[i].CityId}" >${data[i].CityName}</option>`
+                    $("#CityId").append(options);
+                }
+            }
+        }
+
+        //zipcode
+
+        if (@Model.ZipCode != 0) {
+            $('#ZipCodeId').html('<option value="">Select zipcode</option>');
+
+            var zipId = @Model.City
+                console.log(@Model.City)
+            $.ajax({
+                type: "GET",
+                url: "/Home/GetZipCodeByCity?cityId=" + zipId,
+                success: function (data) {
+                    console.log(data);
+                    /* ChangeCityDropDown(data)*/
+                    for (var i = 0; i < data.length; i++) {
+                        var options = '<option id="' + data[i].ZipCodeId + '" value="' + data[i].ZipCodeId + '">' + data[i].ZipCodeName + '</option>';
+                        $('#ZipCodeId').append(options);
+                    }
+                    $("#ZipCodeId").val(@Model.ZipCode)
+                }
+            });
+        }
+
+        $('#CountryId').on('change', function () {
+            $('#StateId').html('<option value="">Select State</option>');
+            $('#CityId').html('<option value="">Select City</option>');
+            var CountryId = $("#CountryId").val();
+            $.ajax({
+                type: "GET",
+                url: "/Home/GetStateByCountry?countryId=" + CountryId,
+                success: function (data) {
+                    //console.log(data);
+                    ChangeStateDropDown(data)
+                }
+            });
+
+            function ChangeStateDropDown(data) {
+                for (var i = 0; i < data.length; i++) {
+                    var options = `<option id="${data[i].StateId}" value="${data[i].StateId}" >${data[i].StateName}</option>`
+                    $("#StateId").append(options);
+                }
+            }
+        })
+
+        $('#StateId').on('change', function () {
+
+            $('#CityId').html('<option value="">Select City</option>');
+
+            var StateId = $("#StateId").val();
+            $.ajax({
+                type: "GET",
+                url: "/Home/GetCityByState?stateId=" + StateId,
+                success: function (data) {
+                    console.log(data);
+                    ChangeCityDropDown(data)
+                }
+            });
+
+            function ChangeCityDropDown(data) {
+                for (var i = 0; i < data.length; i++) {
+                    var options = `<option id="${data[i].CityId}" value="${data[i].CityId}" >${data[i].CityName}</option>`
+                    $("#CityId").append(options);
+                }
+            }
+        })
+
+        //BindZipCode
+        $('#CityId').on('change', function () {
+            $('#ZipCodeId').html('<option value="Select">--Select ZipCode--</option>');
+
+            var CityId = $('#CityId').val();
+            if (CityId != null && CityId != undefined && CityId != '') {
+                $.ajax({
+                    method: "GET",
+                    url: "/Home/GetZipCodeByCity?cityId=" + CityId,
+                    success: function (data) {
+                        for (var i = 0; i < data.length; i++) {
+                            var options = '<option id="' + data[i].ZipCodeId + '" value="' + data[i].ZipCodeId + '">' + data[i].ZipCodeName + '</option>';
+                            $('#ZipCodeId').append(options);
+                        }
+                    }
+                });
+            }
+        })
+    })
+</script>
+
+
+
+

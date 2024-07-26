@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ca86230988e94d188bf9e34e041704c3" Name="Diagram1" ZoomLevel="60">
+        <EntityTypeShape EntityType="Sachin_452Model.City" Width="1.5" PointX="5.25" PointY="3.75" />
+        <EntityTypeShape EntityType="Sachin_452Model.Country" Width="1.5" PointX="0.75" PointY="3.875" />
+        <EntityTypeShape EntityType="Sachin_452Model.State" Width="1.5" PointX="3" PointY="3.75" />
+        <EntityTypeShape EntityType="Sachin_452Model.UserRideTable" Width="1.5" PointX="9.75" PointY="5.125" />
+        <EntityTypeShape EntityType="Sachin_452Model.ZipCode" Width="1.5" PointX="7.5" PointY="9" />
+        <AssociationConnector Association="Sachin_452Model.FK__City__StateId__0D7A0286" />
+        <AssociationConnector Association="Sachin_452Model.FK__UserRideTa__City__1AD3FDA4" />
+        <AssociationConnector Association="Sachin_452Model.FK__ZipCode__CityId__10566F31" />
+        <AssociationConnector Association="Sachin_452Model.FK__State__CountryId__0A9D95DB" />
+        <AssociationConnector Association="Sachin_452Model.FK__UserRideT__Count__18EBB532" />
+        <AssociationConnector Association="Sachin_452Model.FK__UserRideT__State__19DFD96B" />
+        <AssociationConnector Association="Sachin_452Model.FK__UserRideT__ZipCo__1BC821DD" />
+        <EntityTypeShape EntityType="Sachin_452Model.BikeDetails" Width="1.5" PointX="3" PointY="7" />
+        <EntityTypeShape EntityType="Sachin_452Model.Seller" Width="1.5" PointX="0.75" PointY="7.375" />
+        <AssociationConnector Association="Sachin_452Model.FK__BikeDetai__Selle__2180FB33" />
+        <EntityTypeShape EntityType="Sachin_452Model.Favourites" Width="1.5" PointX="0.75" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

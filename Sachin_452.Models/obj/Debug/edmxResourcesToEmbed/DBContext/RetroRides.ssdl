@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Sachin_452Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BikeDetails">
+    <Key>
+      <PropertyRef Name="BikeId" />
+    </Key>
+    <Property Name="BikeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SellerId" Type="int" />
+    <Property Name="BrandName" Type="varchar" MaxLength="100" />
+    <Property Name="BikeModel" Type="varchar" MaxLength="100" />
+    <Property Name="Years" Type="int" />
+    <Property Name="KilometresDriven" Type="int" />
+    <Property Name="Price" Type="int" />
+    <Property Name="Description" Type="varchar(max)" />
+    <Property Name="BikeImages" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="CityId" />
+    </Key>
+    <Property Name="CityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CityName" Type="varchar" MaxLength="50" />
+    <Property Name="StateId" Type="int" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="CountryId" />
+    </Key>
+    <Property Name="CountryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CountryName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Favourites">
+    <Key>
+      <PropertyRef Name="FavouriteId" />
+    </Key>
+    <Property Name="FavouriteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BikeId" Type="int" />
+    <Property Name="UserId" Type="int" />
+  </EntityType>
+  <EntityType Name="Seller">
+    <Key>
+      <PropertyRef Name="SellerId" />
+    </Key>
+    <Property Name="SellerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SellerFirstName" Type="varchar" MaxLength="100" />
+    <Property Name="SellerlastName" Type="varchar" MaxLength="100" />
+    <Property Name="SellerEmail" Type="varchar" MaxLength="100" />
+    <Property Name="SellerPhoneNumber" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="State">
+    <Key>
+      <PropertyRef Name="StateId" />
+    </Key>
+    <Property Name="StateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StateName" Type="varchar" MaxLength="50" />
+    <Property Name="CountryId" Type="int" />
+  </EntityType>
+  <EntityType Name="UserRideTable">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="50" />
+    <Property Name="MiddleName" Type="varchar" MaxLength="50" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" />
+    <Property Name="Email" Type="varchar" MaxLength="100" />
+    <Property Name="PhoneNumber" Type="varchar" MaxLength="20" />
+    <Property Name="DOB" Type="date" />
+    <Property Name="AddressLine1" Type="varchar(max)" />
+    <Property Name="AddressLine2" Type="varchar(max)" />
+    <Property Name="Country" Type="int" />
+    <Property Name="State" Type="int" />
+    <Property Name="City" Type="int" />
+    <Property Name="ZipCode" Type="int" />
+    <Property Name="ProfilePhoto" Type="varchar(max)" />
+    <Property Name="Password" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="ZipCode">
+    <Key>
+      <PropertyRef Name="ZipCodeId" />
+    </Key>
+    <Property Name="ZipCodeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ZipCodeName" Type="nvarchar" MaxLength="20" />
+    <Property Name="CityId" Type="int" />
+  </EntityType>
+  <Association Name="FK__BikeDetai__Selle__2180FB33">
+    <End Role="Seller" Type="Self.Seller" Multiplicity="0..1" />
+    <End Role="BikeDetails" Type="Self.BikeDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Seller">
+        <PropertyRef Name="SellerId" />
+      </Principal>
+      <Dependent Role="BikeDetails">
+        <PropertyRef Name="SellerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__City__StateId__0D7A0286">
+    <End Role="State" Type="Self.State" Multiplicity="0..1" />
+    <End Role="City" Type="Self.City" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="State">
+        <PropertyRef Name="StateId" />
+      </Principal>
+      <Dependent Role="City">
+        <PropertyRef Name="StateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__State__CountryId__0A9D95DB">
+    <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+    <End Role="State" Type="Self.State" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="State">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserRideT__Count__18EBB532">
+    <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+    <End Role="UserRideTable" Type="Self.UserRideTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="UserRideTable">
+        <PropertyRef Name="Country" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserRideT__State__19DFD96B">
+    <End Role="State" Type="Self.State" Multiplicity="0..1" />
+    <End Role="UserRideTable" Type="Self.UserRideTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="State">
+        <PropertyRef Name="StateId" />
+      </Principal>
+      <Dependent Role="UserRideTable">
+        <PropertyRef Name="State" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserRideT__ZipCo__1BC821DD">
+    <End Role="ZipCode" Type="Self.ZipCode" Multiplicity="0..1" />
+    <End Role="UserRideTable" Type="Self.UserRideTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ZipCode">
+        <PropertyRef Name="ZipCodeId" />
+      </Principal>
+      <Dependent Role="UserRideTable">
+        <PropertyRef Name="ZipCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserRideTa__City__1AD3FDA4">
+    <End Role="City" Type="Self.City" Multiplicity="0..1" />
+    <End Role="UserRideTable" Type="Self.UserRideTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityId" />
+      </Principal>
+      <Dependent Role="UserRideTable">
+        <PropertyRef Name="City" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ZipCode__CityId__10566F31">
+    <End Role="City" Type="Self.City" Multiplicity="0..1" />
+    <End Role="ZipCode" Type="Self.ZipCode" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityId" />
+      </Principal>
+      <Dependent Role="ZipCode">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Sachin_452ModelStoreContainer">
+    <EntitySet Name="BikeDetails" EntityType="Self.BikeDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Favourites" EntityType="Self.Favourites" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Seller" EntityType="Self.Seller" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="State" EntityType="Self.State" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserRideTable" EntityType="Self.UserRideTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ZipCode" EntityType="Self.ZipCode" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__BikeDetai__Selle__2180FB33" Association="Self.FK__BikeDetai__Selle__2180FB33">
+      <End Role="Seller" EntitySet="Seller" />
+      <End Role="BikeDetails" EntitySet="BikeDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__City__StateId__0D7A0286" Association="Self.FK__City__StateId__0D7A0286">
+      <End Role="State" EntitySet="State" />
+      <End Role="City" EntitySet="City" />
+    </AssociationSet>
+    <AssociationSet Name="FK__State__CountryId__0A9D95DB" Association="Self.FK__State__CountryId__0A9D95DB">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="State" EntitySet="State" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserRideT__Count__18EBB532" Association="Self.FK__UserRideT__Count__18EBB532">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="UserRideTable" EntitySet="UserRideTable" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserRideT__State__19DFD96B" Association="Self.FK__UserRideT__State__19DFD96B">
+      <End Role="State" EntitySet="State" />
+      <End Role="UserRideTable" EntitySet="UserRideTable" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserRideT__ZipCo__1BC821DD" Association="Self.FK__UserRideT__ZipCo__1BC821DD">
+      <End Role="ZipCode" EntitySet="ZipCode" />
+      <End Role="UserRideTable" EntitySet="UserRideTable" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserRideTa__City__1AD3FDA4" Association="Self.FK__UserRideTa__City__1AD3FDA4">
+      <End Role="City" EntitySet="City" />
+      <End Role="UserRideTable" EntitySet="UserRideTable" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ZipCode__CityId__10566F31" Association="Self.FK__ZipCode__CityId__10566F31">
+      <End Role="City" EntitySet="City" />
+      <End Role="ZipCode" EntitySet="ZipCode" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

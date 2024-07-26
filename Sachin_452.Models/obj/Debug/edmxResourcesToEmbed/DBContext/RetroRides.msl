@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Sachin_452ModelStoreContainer" CdmEntityContainer="Sachin_452Entities">
+    <EntitySetMapping Name="City">
+      <EntityTypeMapping TypeName="Sachin_452Model.City">
+        <MappingFragment StoreEntitySet="City">
+          <ScalarProperty Name="StateId" ColumnName="StateId" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Country">
+      <EntityTypeMapping TypeName="Sachin_452Model.Country">
+        <MappingFragment StoreEntitySet="Country">
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="State">
+      <EntityTypeMapping TypeName="Sachin_452Model.State">
+        <MappingFragment StoreEntitySet="State">
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="StateName" ColumnName="StateName" />
+          <ScalarProperty Name="StateId" ColumnName="StateId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserRideTable">
+      <EntityTypeMapping TypeName="Sachin_452Model.UserRideTable">
+        <MappingFragment StoreEntitySet="UserRideTable">
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="ProfilePhoto" ColumnName="ProfilePhoto" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+          <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ZipCode">
+      <EntityTypeMapping TypeName="Sachin_452Model.ZipCode">
+        <MappingFragment StoreEntitySet="ZipCode">
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="ZipCodeName" ColumnName="ZipCodeName" />
+          <ScalarProperty Name="ZipCodeId" ColumnName="ZipCodeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BikeDetails">
+      <EntityTypeMapping TypeName="Sachin_452Model.BikeDetails">
+        <MappingFragment StoreEntitySet="BikeDetails">
+          <ScalarProperty Name="BikeImages" ColumnName="BikeImages" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="KilometresDriven" ColumnName="KilometresDriven" />
+          <ScalarProperty Name="Years" ColumnName="Years" />
+          <ScalarProperty Name="BikeModel" ColumnName="BikeModel" />
+          <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+          <ScalarProperty Name="SellerId" ColumnName="SellerId" />
+          <ScalarProperty Name="BikeId" ColumnName="BikeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Seller">
+      <EntityTypeMapping TypeName="Sachin_452Model.Seller">
+        <MappingFragment StoreEntitySet="Seller">
+          <ScalarProperty Name="SellerPhoneNumber" ColumnName="SellerPhoneNumber" />
+          <ScalarProperty Name="SellerEmail" ColumnName="SellerEmail" />
+          <ScalarProperty Name="SellerlastName" ColumnName="SellerlastName" />
+          <ScalarProperty Name="SellerFirstName" ColumnName="SellerFirstName" />
+          <ScalarProperty Name="SellerId" ColumnName="SellerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Favourites">
+      <EntityTypeMapping TypeName="Sachin_452Model.Favourites">
+        <MappingFragment StoreEntitySet="Favourites">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="BikeId" ColumnName="BikeId" />
+          <ScalarProperty Name="FavouriteId" ColumnName="FavouriteId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

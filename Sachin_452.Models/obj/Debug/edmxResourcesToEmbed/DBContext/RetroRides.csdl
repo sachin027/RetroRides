@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Sachin_452Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="Sachin_452Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="City" EntityType="Sachin_452Model.City" />
+    <EntitySet Name="Country" EntityType="Sachin_452Model.Country" />
+    <EntitySet Name="State" EntityType="Sachin_452Model.State" />
+    <EntitySet Name="UserRideTable" EntityType="Sachin_452Model.UserRideTable" />
+    <EntitySet Name="ZipCode" EntityType="Sachin_452Model.ZipCode" />
+    <AssociationSet Name="FK__City__StateId__0D7A0286" Association="Sachin_452Model.FK__City__StateId__0D7A0286">
+      <End Role="State" EntitySet="State" />
+      <End Role="City" EntitySet="City" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserRideTa__City__1AD3FDA4" Association="Sachin_452Model.FK__UserRideTa__City__1AD3FDA4">
+      <End Role="City" EntitySet="City" />
+      <End Role="UserRideTable" EntitySet="UserRideTable" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ZipCode__CityId__10566F31" Association="Sachin_452Model.FK__ZipCode__CityId__10566F31">
+      <End Role="City" EntitySet="City" />
+      <End Role="ZipCode" EntitySet="ZipCode" />
+    </AssociationSet>
+    <AssociationSet Name="FK__State__CountryId__0A9D95DB" Association="Sachin_452Model.FK__State__CountryId__0A9D95DB">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="State" EntitySet="State" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserRideT__Count__18EBB532" Association="Sachin_452Model.FK__UserRideT__Count__18EBB532">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="UserRideTable" EntitySet="UserRideTable" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserRideT__State__19DFD96B" Association="Sachin_452Model.FK__UserRideT__State__19DFD96B">
+      <End Role="State" EntitySet="State" />
+      <End Role="UserRideTable" EntitySet="UserRideTable" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserRideT__ZipCo__1BC821DD" Association="Sachin_452Model.FK__UserRideT__ZipCo__1BC821DD">
+      <End Role="ZipCode" EntitySet="ZipCode" />
+      <End Role="UserRideTable" EntitySet="UserRideTable" />
+    </AssociationSet>
+    <EntitySet Name="BikeDetails" EntityType="Sachin_452Model.BikeDetails" />
+    <EntitySet Name="Seller" EntityType="Sachin_452Model.Seller" />
+    <AssociationSet Name="FK__BikeDetai__Selle__2180FB33" Association="Sachin_452Model.FK__BikeDetai__Selle__2180FB33">
+      <End Role="Seller" EntitySet="Seller" />
+      <End Role="BikeDetails" EntitySet="BikeDetails" />
+    </AssociationSet>
+    <EntitySet Name="Favourites" EntityType="Sachin_452Model.Favourites" />
+  </EntityContainer>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="CityId" />
+    </Key>
+    <Property Name="CityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CityName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StateId" Type="Int32" />
+    <NavigationProperty Name="State" Relationship="Sachin_452Model.FK__City__StateId__0D7A0286" FromRole="City" ToRole="State" />
+    <NavigationProperty Name="UserRideTable" Relationship="Sachin_452Model.FK__UserRideTa__City__1AD3FDA4" FromRole="City" ToRole="UserRideTable" />
+    <NavigationProperty Name="ZipCode" Relationship="Sachin_452Model.FK__ZipCode__CityId__10566F31" FromRole="City" ToRole="ZipCode" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="CountryId" />
+    </Key>
+    <Property Name="CountryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CountryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="State" Relationship="Sachin_452Model.FK__State__CountryId__0A9D95DB" FromRole="Country" ToRole="State" />
+    <NavigationProperty Name="UserRideTable" Relationship="Sachin_452Model.FK__UserRideT__Count__18EBB532" FromRole="Country" ToRole="UserRideTable" />
+  </EntityType>
+  <EntityType Name="State">
+    <Key>
+      <PropertyRef Name="StateId" />
+    </Key>
+    <Property Name="StateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StateName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CountryId" Type="Int32" />
+    <NavigationProperty Name="City" Relationship="Sachin_452Model.FK__City__StateId__0D7A0286" FromRole="State" ToRole="City" />
+    <NavigationProperty Name="Country" Relationship="Sachin_452Model.FK__State__CountryId__0A9D95DB" FromRole="State" ToRole="Country" />
+    <NavigationProperty Name="UserRideTable" Relationship="Sachin_452Model.FK__UserRideT__State__19DFD96B" FromRole="State" ToRole="UserRideTable" />
+  </EntityType>
+  <EntityType Name="UserRideTable">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="DOB" Type="DateTime" Precision="0" />
+    <Property Name="AddressLine1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="AddressLine2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Country" Type="Int32" />
+    <Property Name="State" Type="Int32" />
+    <Property Name="City" Type="Int32" />
+    <Property Name="ZipCode" Type="Int32" />
+    <Property Name="ProfilePhoto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="City1" Relationship="Sachin_452Model.FK__UserRideTa__City__1AD3FDA4" FromRole="UserRideTable" ToRole="City" />
+    <NavigationProperty Name="Country1" Relationship="Sachin_452Model.FK__UserRideT__Count__18EBB532" FromRole="UserRideTable" ToRole="Country" />
+    <NavigationProperty Name="State1" Relationship="Sachin_452Model.FK__UserRideT__State__19DFD96B" FromRole="UserRideTable" ToRole="State" />
+    <NavigationProperty Name="ZipCode1" Relationship="Sachin_452Model.FK__UserRideT__ZipCo__1BC821DD" FromRole="UserRideTable" ToRole="ZipCode" />
+    <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ZipCode">
+    <Key>
+      <PropertyRef Name="ZipCodeId" />
+    </Key>
+    <Property Name="ZipCodeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ZipCodeName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="CityId" Type="Int32" />
+    <NavigationProperty Name="City" Relationship="Sachin_452Model.FK__ZipCode__CityId__10566F31" FromRole="ZipCode" ToRole="City" />
+    <NavigationProperty Name="UserRideTable" Relationship="Sachin_452Model.FK__UserRideT__ZipCo__1BC821DD" FromRole="ZipCode" ToRole="UserRideTable" />
+  </EntityType>
+  <Association Name="FK__City__StateId__0D7A0286">
+    <End Type="Sachin_452Model.State" Role="State" Multiplicity="0..1" />
+    <End Type="Sachin_452Model.City" Role="City" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="State">
+        <PropertyRef Name="StateId" />
+      </Principal>
+      <Dependent Role="City">
+        <PropertyRef Name="StateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserRideTa__City__1AD3FDA4">
+    <End Type="Sachin_452Model.City" Role="City" Multiplicity="0..1" />
+    <End Type="Sachin_452Model.UserRideTable" Role="UserRideTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityId" />
+      </Principal>
+      <Dependent Role="UserRideTable">
+        <PropertyRef Name="City" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ZipCode__CityId__10566F31">
+    <End Type="Sachin_452Model.City" Role="City" Multiplicity="0..1" />
+    <End Type="Sachin_452Model.ZipCode" Role="ZipCode" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityId" />
+      </Principal>
+      <Dependent Role="ZipCode">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__State__CountryId__0A9D95DB">
+    <End Type="Sachin_452Model.Country" Role="Country" Multiplicity="0..1" />
+    <End Type="Sachin_452Model.State" Role="State" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="State">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserRideT__Count__18EBB532">
+    <End Type="Sachin_452Model.Country" Role="Country" Multiplicity="0..1" />
+    <End Type="Sachin_452Model.UserRideTable" Role="UserRideTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="UserRideTable">
+        <PropertyRef Name="Country" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserRideT__State__19DFD96B">
+    <End Type="Sachin_452Model.State" Role="State" Multiplicity="0..1" />
+    <End Type="Sachin_452Model.UserRideTable" Role="UserRideTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="State">
+        <PropertyRef Name="StateId" />
+      </Principal>
+      <Dependent Role="UserRideTable">
+        <PropertyRef Name="State" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserRideT__ZipCo__1BC821DD">
+    <End Type="Sachin_452Model.ZipCode" Role="ZipCode" Multiplicity="0..1" />
+    <End Type="Sachin_452Model.UserRideTable" Role="UserRideTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ZipCode">
+        <PropertyRef Name="ZipCodeId" />
+      </Principal>
+      <Dependent Role="UserRideTable">
+        <PropertyRef Name="ZipCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="BikeDetails">
+    <Key>
+      <PropertyRef Name="BikeId" />
+    </Key>
+    <Property Name="BikeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SellerId" Type="Int32" />
+    <Property Name="BrandName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="BikeModel" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Years" Type="Int32" />
+    <Property Name="KilometresDriven" Type="Int32" />
+    <Property Name="Price" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="BikeImages" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Seller" Relationship="Sachin_452Model.FK__BikeDetai__Selle__2180FB33" FromRole="BikeDetails" ToRole="Seller" />
+  </EntityType>
+  <EntityType Name="Seller">
+    <Key>
+      <PropertyRef Name="SellerId" />
+    </Key>
+    <Property Name="SellerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SellerFirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="SellerlastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="SellerEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="SellerPhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="BikeDetails" Relationship="Sachin_452Model.FK__BikeDetai__Selle__2180FB33" FromRole="Seller" ToRole="BikeDetails" />
+  </EntityType>
+  <Association Name="FK__BikeDetai__Selle__2180FB33">
+    <End Type="Sachin_452Model.Seller" Role="Seller" Multiplicity="0..1" />
+    <End Type="Sachin_452Model.BikeDetails" Role="BikeDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Seller">
+        <PropertyRef Name="SellerId" />
+      </Principal>
+      <Dependent Role="BikeDetails">
+        <PropertyRef Name="SellerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Favourites">
+    <Key>
+      <PropertyRef Name="FavouriteId" />
+    </Key>
+    <Property Name="FavouriteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BikeId" Type="Int32" />
+    <Property Name="UserId" Type="Int32" />
+  </EntityType>
+</Schema>

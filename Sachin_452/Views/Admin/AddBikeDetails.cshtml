@@ -1,0 +1,140 @@
+﻿@model Sachin_452.Models.ViewModel.BikeDetailModel
+@{
+    ViewBag.Title = "AddBikeDetails";
+    Layout = "~/Views/Shared/_LayoutAdminPage.cshtml";
+}
+
+<h2>AddBikeDetails</h2>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            /*padding: 20px;*/
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"], input[type="email"], input[type="tel"], textarea, select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        input[type="file"] {
+            margin-top: 5px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+            button:hover {
+                background-color: #45a049;
+            }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+    </style>
+
+    <div class="form-container">
+        <form  method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="brand">Brand Name <span>(Required)</span>:</label>
+                <input type="text" id="brand" name="BrandName" class="form-control" >
+                @Html.ValidationMessageFor(x => x.BrandName, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label for="models">Models <span>(Required)</span>:</label>
+                <input type="text" id="models" name="BikeModel" class="form-control">
+                @Html.ValidationMessageFor(x => x.BikeModel, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label for="years">Years <span>(Required)</span>:</label>
+                <input type="text" id="years" name="Years" class="form-control">
+                @Html.ValidationMessageFor(x => x.Years, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label for="kilometres">Kilometres driven <span>(Required)</span>:</label>
+                <input type="text" id="kilometres" name="KilometresDriven" class="form-control">
+                @Html.ValidationMessageFor(x => x.KilometresDriven, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label for="price">Price <span>(Required)</span>:</label>
+                <input type="text" id="price" name="Price" class="form-control">
+                @Html.ValidationMessageFor(x => x.Price, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea id="description" name="Description" class="form-control"></textarea>
+                @Html.ValidationMessageFor(x => x.Description, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label for="images">Image(s) <span>(Required, JPG/PNG/JPEG, max 3MB each, up to 5 images)</span>:</label>
+                <input type="file" id="images" name="BikeImages" class="form-control" accept=".jpg, .jpeg, .png" multiple>
+                @Html.ValidationMessageFor(x => x.BikeImages, "", new { @class = "text-danger" })
+                <small class="error-message">Max file size: 3MB per image</small>
+            </div>
+            <div class="form-group">
+                <label for="sellerFirstName">Seller First Name <span>(Required)</span>:</label>
+                <input type="text" id="sellerFirstName" name="SellerFirstName" class="form-control">
+               @Html.ValidationMessageFor(x => x.SellerFirstName, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label for="sellerLastName">Seller Last Name <span>(Required)</span>:</label>
+                <input type="text" id="sellerLastName" name="SellerlastName" class="form-control">
+                @Html.ValidationMessageFor(x => x.SellerlastName, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label for="sellerEmail">Seller Email <span>(Required)</span>:</label>
+                <input type="text" id="sellerEmail" name="SellerEmail" class="form-control">
+                @Html.ValidationMessageFor(x => x.SellerEmail, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label for="sellerPhone">Seller Phone Number <span>(Required)</span>:</label>
+                <input type="text" id="sellerPhone" name="SellerPhoneNumber" class="form-control">
+                @Html.ValidationMessageFor(x => x.SellerPhoneNumber, "", new { @class = "text-danger" })
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+

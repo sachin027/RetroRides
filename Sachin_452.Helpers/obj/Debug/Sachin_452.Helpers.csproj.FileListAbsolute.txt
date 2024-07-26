@@ -1,0 +1,6 @@
+C:\Sachin\MVC\Sachin_452\Sachin_452.Helpers\bin\Debug\Sachin_452.Helpers.dll
+C:\Sachin\MVC\Sachin_452\Sachin_452.Helpers\bin\Debug\Sachin_452.Helpers.pdb
+C:\Sachin\MVC\Sachin_452\Sachin_452.Helpers\obj\Debug\Sachin_452.Helpers.csproj.AssemblyReference.cache
+C:\Sachin\MVC\Sachin_452\Sachin_452.Helpers\obj\Debug\Sachin_452.Helpers.csproj.CoreCompileInputs.cache
+C:\Sachin\MVC\Sachin_452\Sachin_452.Helpers\obj\Debug\Sachin_452.Helpers.dll
+C:\Sachin\MVC\Sachin_452\Sachin_452.Helpers\obj\Debug\Sachin_452.Helpers.pdb
